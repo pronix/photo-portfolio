@@ -1,23 +1,35 @@
 <p>
-  <b>Title:</b>
+  <b>Topic:</b>
   <%=h @post.title %>
 </p>
 
 <p>
-  <b>Short desc:</b>
-  <%=h @post.short_desc %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%=h @post.date %>
-</p>
-
-<p>
-  <b>Body:</b>
+  <b>Text:</b>
   <%=h @post.body %>
 </p>
 
-
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+
+
+<%= link_to 'Main Page', root_path %>
+<%= link_to 'Posts index', posts_path %>
+
+
+
+<h2>Comments</h2>
+   <% for comment in @post.comments %>
+      <p>
+      Comment: <br /> 
+      <%= comment.body %>
+      <h5>By: <%= comment.author %> </h5>
+     <%= link_to '(delete)',:controller=>"posts", :confirm => 'Are you sure?', :id=>@post.id,:action =>"uncomment" , :comment_id=>comment.id %>
+      </p> 
+<% end %>
+
+<%= form_tag :action => "comment", :id => @post %>
+   <%= text_area "comment", "body" %>
+<br />
+    <%= show_simple_captcha %>  
+<br />
+   <%= submit_tag "Comment" %>
+</form>

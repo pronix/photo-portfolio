@@ -2,25 +2,28 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Short desc</th>
-    <th>Date</th>
-    <th>Body</th>
+    <th>Topic</th>
+    <th>Description</th> 
+    <th>Updated at</th>
   </tr>
 
-<% @posts.each do |post| %>
+<% for post in @posts %>
   <tr>
-    <td><%=h post.title %></td>
-    <td><%=h post.short_desc %></td>
-    <td><%=h post.date %></td>
-    <td><%=h post.body %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to post.title, post %>
+	    <%= link_to '(delete)',  post, :confirm => 'Are you sure?', :method => :delete  %>
+	</td>
+    <td>
+	<%= post.short_desc %>
+    </td>
+    <td>
+    	<%= h post.date.strftime('%d/%m/%Y %H:%M:%S') %>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
 
+<br />
 <%= link_to 'New post', new_post_path %>
+
+<%= link_to 'Main Page', root_path %>

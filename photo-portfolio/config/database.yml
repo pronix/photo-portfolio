@@ -18,7 +18,7 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: photo-portpholio_development
+  database: photo-portfolio_development
   pool: 5
   username: root
   password:
@@ -31,7 +31,7 @@ test: &TEST
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: photo-portpholio_test
+  database: photo-portfolio_test
   pool: 5
   username: root
   password:
@@ -41,7 +41,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: photo-portpholio_production
+  database: photo-portfolio_production
   pool: 5
   username: root
   password: 
