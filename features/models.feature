@@ -87,6 +87,36 @@ Feature: Main Models
     When I press "Update"
     Then I should see "Information updated "
     
+  Scenario Outline: New Photo
+    Given I am logged as an owner
+    And I am on new photo page
+    And I fill in "file" with "<filename>"
+    And I fill in "name" with "<name>"
+    When I press "Submit"
+    Then must be "<num>" new photo in database
+    And I should see "<message>"
+  
+   Examles:
+    | filename | name | num | message               |
+    | C:\1.gif | pic1 | 1   | New photo uploaded    |
+    | C:\1.gi  | pic1 | 0   | Photo wasn't uploaded |
+    | C:\1.gif |      | 0   | Photo easn't uploaded |
+    
+  
+  Scenario: Edit Photo
+   Given I am logged as an owner 
+   And I am on edit photo page
+   And I fill in "Name" with "<name>"
+   And I select "<album>" from "Albums"
+   And I check "Slideshow"
+   When I press "Save"
+   Then I should see "Photo updated"
+    
+    
+    
+    
+
+
      
      
      
