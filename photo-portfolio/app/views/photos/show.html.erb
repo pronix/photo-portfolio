@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @photo.name %>
+</p>
+
+<p>
+  <b>Album:</b>
+  <%=h @photo.album %>
+</p>
+
+<p>
+  <b>Slideshow:</b>
+  <%=h @photo.slideshow %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

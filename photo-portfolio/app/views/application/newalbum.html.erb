@@ -1,0 +1,8 @@
+<div id='modal'>
+    <div class='window_title'/>
+      <% form_for @album,:album, :url => {:controller => 'application', :action => 'savealbum', :id => params[:id]} do |t| %>
+  <p>Album's name:<%= t.text_field :name , :size => 15 %></p>
+  <%= submit_tag params[:action] %>
+<% end %>
+</div>
+ 

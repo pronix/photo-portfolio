@@ -1,0 +1,25 @@
+<p>
+   <b>Title</b><br />
+   <%= f.text_field :title %>
+ </p>
+
+
+ <p>
+   <b>Short Description</b><br />
+   <%= f.text_field :short_desc %>
+ </p>
+
+ <p>
+   <b>Text</b><br />
+   <%= javascript_include_tag :fckeditor %>
+   <%= fckeditor_textarea( :post, :body, :height => '450px', :ajax => false) %>
+ </p>
+
+ <p>
+   <b>Created At</b><br />
+   <%= f.datetime_select :date %>
+ </p>
+
+ <p>
+   <%= f.submit button %>
+ </p>
