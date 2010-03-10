@@ -11,6 +11,43 @@
 <div class="" id="content">
 <%= yield %>
 </div>
+
+<div id="information">
+ <h2>About Author</h2>
+ <%@inf=Contact.first%>
+ <%= @inf.information %> 
+</div>
+
+<div id="news">
+ <%@events = Event.find(:all) %>
+<h1>Listing News</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Short desc</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h event.title %></td>
+    <td><%=h event.short_desc %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<div id="header">
+ <p><h2>Header</h2></p>
+ Some static links <br />
+ <% @list=Album.find(:all)%>
+ <% @list.each do |album|%>
+  <%=link_to album.name,album %>
+ <%end%>
+</div>
 </body>
 </html>
  
