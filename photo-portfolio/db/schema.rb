@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(:version => 20100317200658) do
     t.datetime "updated_at"
   end
 
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "wphone"
+    t.text     "address"
+    t.text     "information"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "title"
     t.string   "short_desc"

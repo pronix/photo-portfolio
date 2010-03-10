@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-
+ layout 'admin'
 def create
     @photo = Photo.create( params[:photo] )
     if @photo.save

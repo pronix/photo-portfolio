@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  layout 'admin'
   # GET /albums
   # GET /albums.xml
   def index
