@@ -1,3 +1,93 @@
 <h1>Main page</h1>
 <%= link_to "Blog",posts_path%>
+<br />
+
+<h2>Albums controller</h2>
+<%= link_to "Albums",albums_path %>
+
+<br />
+<script>
+document.observe('dom:loaded', function() {
+if ($('slideshow')) {
+slideshow.initialize();
+}
+});
+ 
+function random(min, max) {
+return Math.floor(min + (max-min) * Math.random());
+}
+ 
+var slideshow = {
+initialize: function() {
+this.slides = $('slideshow').select('.slide');
+this.current = 0;
+this.resize();
+ 
+var images = this.slides.collect(function(i) {
+var image = i.select('img')[0]
+return {
+element: image,
+src: image.alt
+}
+});
+ 
+this.preload(images, function() {
+slideshow.change();
+setInterval(function() {
+slideshow.change();
+}, 2000);
+Event.observe(window, 'resize', function() {
+slideshow.resize();
+});
+});
+},
+preload: function(images, callback) {
+if (images.length > 0) {
+var image = new Image();
+var onload = function() {
+images[0].element.src = images[0].src;
+images = images.without(images[0]);
+setTimeout(function() {
+slideshow.preload(images, callback)
+}, 30);
+};
+if (Prototype.Browser.IE) {
+image.onload = onload;
+} else {
+image.observe('load', onload);
+}
+image.src = images[0].src;
+} else {
+callback();
+}
+},
+resize: function() {
+var first_column_width = $('content').hasClassName('home') ? 220 : 360;
+$('content').style.width = document.viewport.getWidth() - first_column_width + 'px';
+$('content').style.height = document.viewport.getHeight() - 40 + 'px';
+},
+change: function() {
+var prev = this.current;
+var prev_slide = this.slides[prev];
+this.current = this.current + 1 >= this.slides.length ? 0 : this.current + 1;
+this.slides.invoke('setStyle', {'zIndex': 1});
+this.slides[this.current].style.zIndex = 100;
+this.slides[this.current].appear({duration: 0.5, afterFinish: function() {
+prev_slide.fade({duration: 0.25});
+}});
+}
+}
+ 
+</script>
+ 
+<div id="slideshow">
+  <% @photos.each do |photo| %>
+<div class="slide" style="display: none">
+  <img src="/images/blank.gif" alt="<%= photo.image.url(:medium)%>">
+</div>
+<% end %>
+ 
+</div>
+ 
+
 

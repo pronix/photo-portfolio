@@ -2,9 +2,8 @@ class CreatePhotos < ActiveRecord::Migration
   def self.up
     create_table :photos do |t|
       t.text :name
-      t.references :album
-      t.boolean :slideshow
-
+      t.integer :album_id
+      t.boolean :slideshow, :default => false
       t.timestamps
     end
   end

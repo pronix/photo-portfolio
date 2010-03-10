@@ -1,85 +1,72 @@
 class PhotosController < ApplicationController
-  # GET /photos
-  # GET /photos.xml
-  def index
-    @photos = Photo.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @photos }
+def create
+    @photo = Photo.create( params[:photo] )
+    if @photo.save
+      flash[:notice] = 'Photo was successfully uploaded'
+      redirect_to photos_path
+    else
+      redirect_to new_photo_path
     end
   end
-
-  # GET /photos/1
-  # GET /photos/1.xml
-  def show
-    @photo = Photo.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @photo }
-    end
-  end
-
-  # GET /photos/new
-  # GET /photos/new.xml
-  def new
-    @photo = Photo.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @photo }
-    end
-  end
-
-  # GET /photos/1/edit
+ 
   def edit
-    @photo = Photo.find(params[:id])
+    @albums = Album.all
+    @photo = Photo.find_by_id(params[:id])
   end
-
-  # POST /photos
-  # POST /photos.xml
-  def create
-    @photo = Photo.new(params[:photo])
-
-    respond_to do |format|
-      if @photo.save
-        flash[:notice] = 'Photo was successfully created.'
-        format.html { redirect_to(@photo) }
-        format.xml  { render :xml => @photo, :status => :created, :location => @photo }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /photos/1
-  # PUT /photos/1.xml
-  def update
-    @photo = Photo.find(params[:id])
-
-    respond_to do |format|
-      if @photo.update_attributes(params[:photo])
-        flash[:notice] = 'Photo was successfully updated.'
-        format.html { redirect_to(@photo) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /photos/1
-  # DELETE /photos/1.xml
+ 
   def destroy
-    @photo = Photo.find(params[:id])
+    @photo = Photo.find_by_id(params[:id])
     @photo.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(photos_url) }
-      format.xml  { head :ok }
+    redirect_to "/album/#{@photo.album.id}/list/#{@photo.album.id}"
+  end
+ 
+  def save
+    @photo = Photo.find_by_id(params[:id])
+    @photo.name = params[:photo]['name']
+    @photo.album_id = params[:photo]['album'].to_i
+    @photo.slideshow = params[:photo]['slideshow']
+    @photo.save!
+    flash[:notice] = 'Photo was successfully updated'
+    redirect_to photos_path
+  end
+ 
+  def index
+    @photos = Photo.find(:all)
+  end
+ 
+  # ajax запрос на след фотку
+  def next
+    @prev = Photo.find_by_id(params[:id])
+    if params[:albumid]
+    @photo = Photo.find(:all, :conditions => ['album_id = ? and id > ?', @prev.album.id,@prev.id])
+    else
+    @photo = Photo.find(:all, :conditions => ['id > ?',@prev.id])
     end
+    @next = @photo[1]
+    unless @photo.empty?
+      @photo = @photo[0]
+    else
+      @photo = @prev
+    end
+  end
+ 
+  # ajax запрос на предыдущую фотку
+  def prev
+    @next = Photo.find_by_id(params[:id])
+    if params[:albumid]
+    @photo = Photo.find(:all, :conditions => ['album_id = ? and id < ?', @next.album.id,@next.id])
+    else
+    @photo = Photo.find(:all, :conditions => ['id < ?',@next.id])
+    end
+    @prev = @photo[@photo.size-3]
+ 
+    unless @photo.empty?
+      @photo = @photo.last
+    else
+      @photo = @next
+    end
+    render :file => 'admin/photo/next.html.erb', :layout => nil
   end
 end
+ 

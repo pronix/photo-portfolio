@@ -8,6 +8,14 @@ class AddSimpleData < ActiveRecord::Migration
   Post.create :title=>"Fifth Post", :short_desc=>"Admin", :body=>"Some text", :date=>"#{Time.now}"
   Post.create :title=>"Sixth Post", :short_desc=>"Admin", :body=>"Some text", :date=>"#{Time.now}"
   Post.create :title=>"Seventh Post", :short_desc=>"Admin", :body=>"Some text", :date=>"#{Time.now}"
+  
+  
+  Album.create :name=>"First", :description=>"Something"
+  Album.create :name=>"Second", :description=>"Something"
+  Album.create :name=>"Third", :description=>"Something"
+  Album.create :name=>"Fourth", :description=>"Something"
+  Album.create :name=>"Fifths", :description=>"Something"
+  Album.create :name=>"Sixts", :description=>"Something"
   end
 
   def self.down

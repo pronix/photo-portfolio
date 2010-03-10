@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1.xml
   def show
     @album = Album.find(params[:id])
-
+    @collection = @album.photo.all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @album }
