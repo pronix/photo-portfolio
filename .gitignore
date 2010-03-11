@@ -1,3 +1,7 @@
 photo-portfolio/config/database.yml
 photo-portfolio/log/development.log
-
+photo-portfolio/config/database.yml
+photo-portfolio/log/development.log
+photo-portfolio/log/production.log
+photo-portfolio/log/server.log
+photo-portfolio/log/test.log
