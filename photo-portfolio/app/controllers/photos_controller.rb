@@ -18,7 +18,7 @@ def create
   def destroy
     @photo = Photo.find_by_id(params[:id])
     @photo.destroy
-    redirect_to "/album/#{@photo.album.id}/list/#{@photo.album.id}"
+    redirect_to photos_path
   end
  
   def save

@@ -13,7 +13,7 @@
 <% @collection.each do |photo|%>
       <% @pre = params[:albumid] ? "/album/#{photo.album.id}" : '' %>
         <div  class="thumbnail" id="item_<%= photo.id %>">
-          <%= link_to image_tag(photo.image.url(:thumb)), "#{@pre}/photos/#{photo.id}" %>
+          <%= link_to image_tag(photo.image.url(:thumb)), "#{@pre}/img/#{photo.id}" %>
           <%= link_to 'Edit',"/photos/edit/#{photo.id}" %>
         </div>
       <% end %>

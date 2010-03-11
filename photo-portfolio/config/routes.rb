@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :contacts
 
-  map.resources :contacts
-
   map.resources :events
 
   map.resources :albums
@@ -15,11 +13,11 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.admin '/admin', :controller => 'admin', :action => 'index'
   
+  map.connect 'img/:id', :controller => 'albums', :action => 'view_img'
+  
   map.resources :users
 
   map.resource :session
-
-  map.resources :news
 
   map.resources :posts
 
