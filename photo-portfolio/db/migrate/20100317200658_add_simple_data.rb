@@ -16,6 +16,8 @@ class AddSimpleData < ActiveRecord::Migration
   Album.create :name=>"Fourth", :description=>"Something"
   Album.create :name=>"Fifths", :description=>"Something"
   Album.create :name=>"Sixts", :description=>"Something"
+  
+  Contact.create  :name=>"name",:information=>"Some information about author"
   end
 
   def self.down
