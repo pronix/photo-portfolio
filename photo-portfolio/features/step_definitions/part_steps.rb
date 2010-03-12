@@ -3,5 +3,8 @@ Given /^I am logged as an owner$/ do
 end
 
 Then /^must be new record in Posts with title "(.*)"$/ do |arg1|
-  
 end
+
+Then /^must be new comment in Comments$/ do
+end
+ 
