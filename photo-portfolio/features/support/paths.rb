@@ -12,7 +12,8 @@ module NavigationHelpers
       '/'
     when /edit information page/
       'contacts/new'
-     
+    when /new post page/
+      'posts/new'
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
