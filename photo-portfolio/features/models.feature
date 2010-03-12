@@ -80,12 +80,7 @@ Feature: Main Models
    | MyName  |      | datetime | 0   | Comment wasn't added |
  
    
-  Scenario Outline: Information   
-    Given I am logged as an owner
-    And I am on edit information page
-    And I fill in "body" with "text"
-    When I press "Update"
-    Then I should see "Information updated "
+
     
      
      
