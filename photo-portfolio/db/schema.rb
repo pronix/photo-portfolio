@@ -53,6 +53,20 @@ ActiveRecord::Schema.define(:version => 20100317200658) do
     t.datetime "updated_at"
   end
 
+  create_table "footers", :force => true do |t|
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "short_desc"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photos", :force => true do |t|
     t.text     "name"
     t.integer  "album_id"
