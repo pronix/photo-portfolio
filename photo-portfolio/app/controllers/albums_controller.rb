@@ -94,13 +94,8 @@ class AlbumsController < ApplicationController
   def view_img
     flash[:notice]=""
    @photo = Photo.find_by_id(params[:id])
-   if params[:albumid]
-     @prev = Photo.find(:all, :conditions => ['id < ?',@photo.id]).last
-     @next = Photo.find(:all, :conditions => ['id > ?',@photo.id])[0]
-   else
-     @prev = Photo.find(:all, :conditions => ['album_id = ? and id < ?', @photo.album.id,@photo.id]).last
-     @next = Photo.find(:all, :conditions => ['album_id = ? and id > ?', @photo.album.id,@photo.id])[0]
-   end
+   @prev = Photo.find(:all, :conditions => ['album_id = ? and id < ?', @photo.album.id,@photo.id]).last
+   @next = Photo.find(:all, :conditions => ['album_id = ? and id > ?', @photo.album.id,@photo.id])[0]
  end
 
 end

@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag 'scaffold', 'albums', 'test' %>
+<%= stylesheet_link_tag 'scaffold', 'application', 'albums', 'test' %>
 <div id="img_medium">
 <% if params[:id].to_i == @photo.id -%>
 <div id='pins_<%=@photo.id%>'>
@@ -8,6 +8,7 @@
 <div id="mcont_<%=@photo.id%>">
 
   <% if @prev %>
+	<p>PREV!</p>	
     <div class="prev_div" id="prev_div_<%= @photo.id %>" onMouseOver="$('prev_id_<%= @photo.id %>').show();" onMouseOut="$('prev_id_<%= @photo.id %>').hide();">
       <% @plink = params[:albumid] ? "/album/#{@photo.album.id}/prev/#{@photo.id}/#{@photo.id}" : "/img/prev/#{@photo.id}/#{@photo.id}" -%>
       <%= image_tag '/images/prev.gif', :id => "prev_id_#{@photo.id}", :class => 'prev_id', :onClick => "$('mcont_#{@photo.id}').hide(); $('pins_#{@photo.id}').show();new Ajax.Updater('pins_#{@photo.id}', '#{@plink}', {asynchronous:true, evalScripts:true});return false;" %>
@@ -17,6 +18,7 @@
   <% end %>
 
 <% if @next %>
+	<p>Next!</p>
     <div class='next_div' id='next_div_<%= @photo.id %>' onMouseOver="$('next_id_<%= @photo.id %>').show();" onMouseOut="$('next_id_<%= @photo.id %>').hide();">
       <% @nlink = params[:albumid] ? "/album/#{@photo.album.id}/next/#{@photo.id}/#{@photo.id}" : "/img/next/#{@photo.id}/#{@photo.id}" -%>
       <%= image_tag '/images/next.gif', :id => "next_id_#{@photo.id}", :class => 'next_id', :onClick => " $('mcont_#{@photo.id}').hide(); $('pins_#{@photo.id}').show();new Ajax.Updater('pins_#{@photo.id}', '#{@nlink}', {asynchronous:true, evalScripts:true});return false;" %>

@@ -19,9 +19,7 @@
 	overflow: hidden;
 	background: #000000 url('../images/ajax-loader.gif') no-repeat 20px 20px;
   }
-  #slideshow .slide {
-	position: absolute;
-  }
+
   #header {
     top: 3%; 
     margin-left: 1%; 
@@ -76,8 +74,8 @@
  
   .blog{
         font-size: 130%;
-	margin-left:85%;
-	margin-top:-10px;
+	margin-left:92%;
+	margin-top:-25px;
    }
 
 .news{

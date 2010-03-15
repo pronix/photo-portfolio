@@ -10,9 +10,8 @@
 <br />
 <div id="photos">
 <% @collection.each do |photo|%>
-      <% @pre = params[:albumid] ? "/album/#{photo.album.id}" : '' %>
         <class="thumbnail" id="item_<%= photo.id %>">
-          <%= link_to image_tag(photo.image.url(:thumb)), "#{@pre}/img/#{photo.id}" %>
+          <%= link_to image_tag(photo.image.url(:thumb)), "/album/#{photo.album.id}/img/#{photo.id}" %>
 <%if session[:user_id]==1%>
           <%= link_to 'Edit Photo',"/photos/edit/#{photo.id}" %>
 <%end%>

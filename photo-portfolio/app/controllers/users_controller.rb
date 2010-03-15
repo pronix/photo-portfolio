@@ -7,6 +7,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+  
+  def show
+      redirect_back_or_default('/')
+  end
+  
  
   def create
     logout_keeping_session!

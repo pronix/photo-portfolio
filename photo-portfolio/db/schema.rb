@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20100317200658) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20100317200658) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
-    t.string   "short_desc"
+    t.text     "short_desc"
     t.text     "body"
     t.datetime "date"
     t.datetime "created_at"

@@ -15,7 +15,8 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.admin '/admin', :controller => 'admin', :action => 'index'
   
-  map.connect 'img/:id', :controller => 'albums', :action => 'view_img'
+  map.image 'album/:id/img/:id', :controller => 'albums', :action => 'view_img'
+  map.editfooter '/footer/1/edit',:controller=>'footers',:action=>'edit'
   
   map.resources :users
 
