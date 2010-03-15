@@ -1,5 +1,11 @@
 class FootersController < ApplicationController
   layout 'admin'
+    before_filter 'admin_required'
+ def admin_required
+   unless session[:user_id]==1
+     redirect_to root_path
+   end
+ end
   # GET /footers
   # GET /footers.xml
   def index

@@ -1,34 +1,35 @@
-<p>
-  <b>Topic:</b>
+  <%= stylesheet_link_tag 'scaffold', 'blog' %>
+<h1 class="posts">
   <%=h @post.title %>
-</p>
+</h1>
 
-<p>
-  <b>Text:</b>
+<div id="post_body">
   <%= @post.body %>
-</p>
-
+</div>
+<%if session[:user_id]==1%>
 <%= link_to 'Edit', edit_post_path(@post) %> |
-
+<%end%>
 
 <%= link_to 'Main Page', root_path %>
 <%= link_to 'Posts index', posts_path %>
 
 
-<h2>Comments</h2>
+<h2 class="posts">Comments</h2>
    <% for comment in @post.comments %>
-      <p>
-      Comment: <br /> 
+	<p><%= comment.author.capitalize %> </p>
+      <p class="posts">
       <%= comment.body %>
-      <h5>By: <%= comment.author %> </h5>
-     <%= link_to '(delete)',:controller=>"posts", :confirm => 'Are you sure?', :id=>@post.id,:action =>"uncomment" , :comment_id=>comment.id %>
       </p> 
+<%if session[:user_id]==1%>
+     <%= link_to '(delete)',:controller=>"posts", :confirm => 'Are you sure?', :id=>@post.id,:action =>"uncomment" , :comment_id=>comment.id %>
+<%end%>
 <% end %>
 
+<h2 class="posts">Add your comment</h2>
 <%= form_tag :action => "comment", :id => @post %>
-   <%= text_area "comment", "body" %>
+   <%= text_area "comment", "body",:cols => 40, :rows => 15, :class =>'posts'%>
 <br />
     <%= show_simple_captcha %>  
 <br />
-   <%= submit_tag "Comment" %>
+   <%= submit_tag "   Add   " %>
 </form>

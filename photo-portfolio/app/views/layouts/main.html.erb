@@ -9,10 +9,38 @@
 <script src="/javascripts/all.js" type="text/javascript"></script>
 
 </head> 
+
 <body>
+
+<div id="header">
+
+ <div class="users">
+   <%= render :partial=>"user_bar"%>
+ </div>
+
+ <div class="links"> 
+ <% @list=Album.find(:all)%>
+ <% @list.each do |album|%>
+  <%=link_to album.name,album %>
+ <%end%>
+ </div>
+
+ <div class="blog">
+   <%= link_to "Blog",posts_path%>
+ </div>
+
+</div>
+
+<div id="footer">
+ <p><h8>Footer</h8></p>
+ <%= Footer.first.body.to_s%>
+</div>
+
+
 <div class="" id="content">
 <%= yield %>
 </div>
+
 
 <div id="information">
  <h2>About Author</h2>
@@ -22,38 +50,13 @@
 
 <div id="news">
  <%@events = Event.find(:all) %>
-<h1>Listing News</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Short desc</th>
-  </tr>
+<h1>News</h1>
 
 <% @events.each do |event| %>
-  <tr>
-    <td><%=h event.title %></td>
-    <td><%=h event.short_desc %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <p class="title"><%=link_to event.title,event %></p><br />
+    <p class="description"><%=h event.short_desc %><p>
+ 
 <% end %>
-</table>
-</div>
-
-<div id="header">
- <p><h2>Header</h2></p>
- Some static links <br />
- <% @list=Album.find(:all)%>
- <% @list.each do |album|%>
-  <%=link_to album.name,album %>
- <%end%>
-</div>
-
-<div id="footer">
- <p><h8>Footer</h8></p>
- <%= Footer.first.body.to_s%>
 </div>
 </body>
 </html>

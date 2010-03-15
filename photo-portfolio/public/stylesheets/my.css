@@ -3,7 +3,7 @@
     position: absolute; 
     margin-left: 2%; 
     width: 98%; 
-    background: #f0f0f0; 
+    background: #000; 
     padding: 7px; 
     border: solid 1px red; 
     font-size: 11px;
@@ -24,16 +24,22 @@
   }
   #header {
     top: 3%; 
-    position: absolute;
     margin-left: 1%; 
-    width: 97%; 
-    background: #f0f0f0; 
-    padding: 7px; 
+    padding: 15px; 
+    width: 97%;
+    height:35px;	 
+    background: #000000; 
     border: solid 1px red; 
-    font-size: 11px;
-    color: #666666;
-    line-height: 150%;
+    color: #FFFFFF;
    }
+#header a {
+	color: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+#header a:hover {
+	color: #999999;
+}
   
   #information {
     top: 650px; 
@@ -41,7 +47,7 @@
     margin-left: 1%; 
     width: 55%; 
     height: 200px;
-    background: #f0f0f0; 
+    background: #000; 
     padding: 7px; 
     border: solid 1px red; 
     color: #666666;
@@ -54,13 +60,41 @@
     margin-left: 60%; 
     width: 35%; 
     height: 200px;
-    background: #f0f0f0; 
+    background: #000; 
     padding: 7px; 
     border: solid 1px red; 
     font-size: 11px;
     color: #666666;
     line-height: 150%;
    }
+
+  .links{
+        font-size: 14px;  
+	margin-top:-30px;
+	margin-left:20%;
+   }
+ 
+  .blog{
+        font-size: 130%;
+	margin-left:85%;
+	margin-top:-10px;
+   }
+
+.news{
+font-family: arial, helvetica, sans-serif;
+margin:0;
+padding:0;
+}
+
+.title{
+font-size:190%
+}
+
+.description{
+font-size:150%
+}
+
+ 
    
    body {background:#000000;}
    

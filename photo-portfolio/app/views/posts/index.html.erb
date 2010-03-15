@@ -1,22 +1,27 @@
-<h1>Listing posts</h1>
+  <%= stylesheet_link_tag 'scaffold', 'blog' %>
+<h1 class="posts">List of all posts</h1>
 
-<table>
+<table class="posts">
   <tr>
-    <th>Topic</th>
-    <th>Description</th> 
-    <th>Updated at</th>
+    <th></th>
+    <th>Last edited</th>
   </tr>
 
 <% for post in @posts %>
   <tr>
-    <td><%= link_to post.title, post %>
-	    <%= link_to '(delete)',  post, :confirm => 'Are you sure?', :method => :delete  %>
-	</td>
     <td>
+<p class="title">
+<%= link_to post.title, post %>
+<%if session[:user_id]==1%>
+<%= link_to '(delete)',  post, :confirm => 'Are you sure?', :method => :delete  %><br>
+<%end%>
+</p>
+<p class="description">
 	<%= post.short_desc %>
+</p>
     </td>
     <td>
-    	<%= h post.date.strftime('%d/%m/%Y %H:%M:%S') %>
+    	<%= h post.updated_at.strftime('%d/%m/%Y %H:%M:%S') %>
     </td>
   </tr>
 <% end %>
@@ -24,6 +29,7 @@
 
 
 <br />
+<%if session[:user_id]==1%>
 <%= link_to 'New post', new_post_path %>
-
+<%end%>
 <%= link_to 'Main Page', root_path %>

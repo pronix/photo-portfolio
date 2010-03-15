@@ -1,23 +1,15 @@
-<p>
-  <b>Title:</b>
+  <%= stylesheet_link_tag 'scaffold', 'blog' %>
+<h1 class="posts">
   <%=h @event.title %>
-</p>
+</h1>
 
-<p>
-  <b>Short desc:</b>
-  <%=h @event.short_desc %>
-</p>
-
-<p>
-  <b>Body:</b>
+<div id="post_body">
   <%= @event.body %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%=h @event.date %>
-</p>
+</div>
 
 
+<%if session[:user_id]==1%>
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%end%>
+<%= link_to 'Main Page', root_path %>
+<%= link_to 'News Index', events_path %>

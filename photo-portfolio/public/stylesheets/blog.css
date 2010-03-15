@@ -1,0 +1,62 @@
+body {
+	background: #f5f5f5;
+}
+
+body, div, p, ul, ol {
+	font-family: arial, helvetica, sans-serif;
+}
+
+.posts{
+font-family: arial, helvetica, sans-serif;
+margin:0;
+padding:0;
+}
+
+h1.posts{
+text-align:center;
+font-style:italic;
+font-size: 250%;
+margin-top:3%;
+color:#FF7F00;
+}
+
+h2.posts{
+padding:30px;
+margin-left:3%;
+color:#68838B;
+}
+
+p.posts{
+margin-left:3%;
+background-color: white;
+width:50%;
+}
+
+
+table.posts{
+background-color:#f5f5f5;
+text-align:left;
+margin-left:5%;
+width:90%;
+margin-top:3%;
+}
+
+textarea.posts{
+width:50%;
+height:100px
+}
+
+
+.title{
+font-size:200%
+}
+
+.description{
+font-size:120%
+}
+
+#post_body{
+margin-left:5%;
+width:90%;
+padding:10px;
+}

@@ -1,15 +1,15 @@
-<h1>Editing album</h1>
+<h1>Editing <%=h @album.name%></h1>
 
 <% form_for(@album) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    Title:<br />
     <%= f.text_field :name %>
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
   </p>
   <p>
     <%= f.submit 'Update' %>

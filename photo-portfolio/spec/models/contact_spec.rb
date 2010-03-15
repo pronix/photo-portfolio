@@ -9,7 +9,7 @@ describe Contact do
       :address=>"Some text",
       :information=>"Some information"
       }
-      @existing_user = User.create(@valid_attributes)
+      @existing_contact = Contact.create(@valid_attributes)
       
     end
     

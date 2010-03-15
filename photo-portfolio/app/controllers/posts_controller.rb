@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
-  layout 'admin'
+  layout 'admin',:except=>['index','show']
+    before_filter 'admin_required',:except=>['index','show','comment']
+ def admin_required
+   unless session[:user_id]==1
+     redirect_to root_path
+   end
+ end
   # GET /posts
   # GET /posts.xml
   def index

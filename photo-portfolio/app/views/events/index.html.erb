@@ -1,25 +1,34 @@
-<h1>Listing events</h1>
+ <%= stylesheet_link_tag 'scaffold', 'blog' %>
+<h1 class="posts">News</h1>
 
-<table>
+<table class="posts">
   <tr>
-    <th>Title</th>
-    <th>Short desc</th>
-    <th>Body</th>
-    <th>Date</th>
+    <th></th>
+    <th>Last edited</th>
   </tr>
 
-<% @events.each do |event| %>
+<% for event in @events %>
   <tr>
-    <td><%=h event.title %></td>
-    <td><%=h event.short_desc %></td>
-    <td><%=h event.date %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+<p class="title">
+<%= link_to event.title, event %>
+<%if session[:user_id]==1%>
+<%= link_to '(delete)',  event, :confirm => 'Are you sure?', :method => :delete  %><br>
+<%end%>
+</p>
+<p class="description">
+	<%= event.short_desc %>
+</p>
+    </td>
+    <td>
+    	<%= h event.updated_at.strftime('%d/%m/%Y %H:%M:%S') %>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<%if session[:user_id]==1%>
 <%= link_to 'New event', new_event_path %>
+<%end%>
+<%= link_to 'Main Page', root_path %>

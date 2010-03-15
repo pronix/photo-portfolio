@@ -1,24 +1,25 @@
-<p>
-  <b>Name:</b>
+  <%= stylesheet_link_tag 'scaffold', 'albums', 'test' %>
+<h1 class="posts">
   <%=h @album.name %>
-</p>
+</h1>
 
-<p>
-  <b>Description:</b>
+<p class="posts">
   <%=h @album.description %>
 </p>
 
 <br />
-
+<div id="photos">
 <% @collection.each do |photo|%>
       <% @pre = params[:albumid] ? "/album/#{photo.album.id}" : '' %>
-        <div  class="thumbnail" id="item_<%= photo.id %>">
+        <class="thumbnail" id="item_<%= photo.id %>">
           <%= link_to image_tag(photo.image.url(:thumb)), "#{@pre}/img/#{photo.id}" %>
-          <%= link_to 'Edit',"/photos/edit/#{photo.id}" %>
-        </div>
-      <% end %>
+<%if session[:user_id]==1%>
+          <%= link_to 'Edit Photo',"/photos/edit/#{photo.id}" %>
+<%end%>
+      <% end -%>
 
-
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+</div>
+<%if session[:user_id]==1%>
+<%= link_to 'Edit Album', edit_album_path(@album) %> |
+<%end%>
+<%= link_to 'Albums Index', albums_path %>
