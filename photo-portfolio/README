@@ -1,3 +1,5 @@
-1.Изменил название бд
+1.edit database.yml
 2.rake db:migrate
 3.ruby script/server
+
+http://localhost/admin - admin menu
