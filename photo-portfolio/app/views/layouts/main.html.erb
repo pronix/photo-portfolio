@@ -18,7 +18,8 @@
    <%= render :partial=>"user_bar"%>
  </div>
 
- <div class="links"> 
+ <div class="links">
+ 
  <% @list=Album.find(:all)%>
  <% @list.each do |album|%>
   <%=link_to album.name,album %>
@@ -51,12 +52,21 @@
 <div id="news">
  <%@events = Event.find(:all) %>
 <h1>News</h1>
+<table width="100%" height="150px"  border="0">
+  <tr height="150px">
+    <td><div  style="overflow: auto; height:150px; width:100%" >
+    <% @events.each do |event| %>
+     <p class="title"><%=link_to event.title,event %></p><br />
+     <p class="description"><%=h event.short_desc %><p>
+    <%end%>
+    </div>
+    </td>
+  </tr>
+</table>
 
-<% @events.each do |event| %>
-    <p class="title"><%=link_to event.title,event %></p><br />
-    <p class="description"><%=h event.short_desc %><p>
+
  
-<% end %>
+
 </div>
 </body>
 </html>

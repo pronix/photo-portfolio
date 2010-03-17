@@ -1,0 +1,27 @@
+<% form_for(@picture, :html => {:multipart => :true}) do |f| %>
+  <%= f.error_messages %>
+  
+  <p class="required">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+     <%=f.label "Album: " %>&nbsp&nbsp
+     <%= select("picture", "album_id", Album.find(:all).collect{ |c| [ c.name, c.id] }) %>
+   </p>
+   <p>
+    <%= f.label  "Slideshow" %> &nbsp &nbsp&nbsp&nbsp&nbsp
+    <%= f.check_box :slideshow %> 
+   </p>
+
+  <p class="buttons">
+    <%= f.submit  f.object.new_record? ? 'Create' : 'Update' %>
+    <%= link_to_function 'Cancel', "$(this).parent('form').remove()" if request.xhr? %>
+    <%= image_tag 'spinner.gif', :class => :spinner %>
+  </p>
+<% end %>

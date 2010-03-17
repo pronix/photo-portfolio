@@ -1,69 +1,32 @@
-body {
-	background: #f5f5f5;
+html, body {
+  font-size: 9pt;
+  font-family: Verdana;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #EEE;
 }
 
-body, div, p, ul, ol {
-	font-family: arial, helvetica, sans-serif;
+a {
+  color: brown;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
-.posts{
-font-family: arial, helvetica, sans-serif;
-margin:0;
-padding:0;
+a.edit {
+  display: none;
+}
+a.delete {
+  display: none;
+}h1, h2, h3, h4 {
+  font-family: Georgia;
+  font-weight: normal;
+  color: #88AA8A;
+  margin-top: 0;
 }
 
-h1.posts{
-text-align:center;
-font-style:italic;
-font-size: 250%;
-margin-top:3%;
-color:#FF7F00;
-}
-
-
-p.posts{
-padding:15px;
-font-size:130%;
-margin-top:3%;
-margin-left:3%;
-width:50%;
-}
-
-
-table.posts{
-background-color:#f5f5f5;
-text-align:left;
-margin-left:5%;
-width:90%;
-margin-top:3%;
-}
-
-
-
-.title{
-font-size:200%;
-width:200px;
-padding:15px;
-}
-
-.description{
-font-size:120%
-}
-
-#photos{
-margin-left: 3%;
-width:90%;
-}
-
-.thumbnail {
-        padding: 15px;
-	float: left;
-	width: 140px;
-	height: 140px;
-	margin-right: 20px;
-	margin-bottom: 20px;
-	cursor: pointer;
-}
 img.spinner {
   display: none;
 }
@@ -114,6 +77,27 @@ form input[type="text"], form input[type="file"] {
   margin-left: 2em;
 }
 
+#flashes div {
+  border: 1px solid #fff;
+  padding: 0.5em 26px;
+  margin: 1em 0em;
+  font-weight: bold;
+}
+#flashes .notice {
+  color: #386d19;
+  border-color: #a2d399;
+  background-color: #c7e5c2;
+}
+#flashes .warning {
+  color: #675918;
+  border-color: #e0d182;
+  background-color: #eae1b1;
+}
+#flashes .error {
+  color: #ae2727;
+  border-color: #cf9e9e;
+  background-color: #e2c5c5;
+}
 
 
 /* The basic unit styles */
@@ -145,6 +129,9 @@ div#pictures div.picture div.image a, div#pictures div.picture div.image img {
 div#pictures div.picture div.title {
   text-align: center;
 }
+div#pictures div.picture div.actions {
+  float: right;
+}
 
 div#pictures div.picture form {
   position: absolute;
@@ -158,6 +145,28 @@ div#pictures div.picture form {
   -webkit-box-shadow: #AAA .2em .3em .5em;
   -moz-border-radius: .3em;
   -webkit-border-radius: .3em;
+}
+
+div#pictures div.picture div.spinner {
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: wait;
+}
+div#pictures div.picture div.spinner div {
+  width: 100%;
+  height: 100%;
+  background-color: #888;
+  background-image: url('/images/spinner.gif');
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+* filter: alpha(opacity=70);
+  -moz-border-radius: .5em;
+  -webkit-border-radius: .5em;
 }
 
 /* the show page */

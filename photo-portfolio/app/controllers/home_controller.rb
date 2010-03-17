@@ -2,12 +2,12 @@ class HomeController < ApplicationController
     layout 'main'
   def index
     @albums = Album.find(:all)
-    @photos = Photo.find(:all, :conditions => ['slideshow = ?', true])
+    @photos = Picture.find(:all, :conditions => ['slideshow = ?', true])
   end
 
   def slideshow
     @albums = Album.find(:all)
-    @photos = Photo.find(:all, :conditions => ['slideshow = ?', true])
+    @photos = Picture.find(:all, :conditions => ['slideshow = ?', true])
     @collection = @photos
   end
   

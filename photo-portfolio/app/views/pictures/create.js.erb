@@ -1,0 +1,12 @@
+<% if @picture.valid? %>
+  insert_picture("<%= escape_javascript(render @picture) %>");
+  
+  <%
+    flash.clear
+    
+    # setting up a new dummy image to reset the form
+    @picture = Picture.new
+  %>
+<% end %>
+
+replace_form('new_picture', "<%= escape_javascript(render('form')) %>");

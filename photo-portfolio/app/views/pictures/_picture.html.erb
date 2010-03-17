@@ -1,0 +1,13 @@
+<% div_for picture do %>
+  <div class="spinner"><div></div></div>
+  <div class="image">
+    <%= link_to image_tag(picture.image.url(:thmb)), picture.image.url(:medium), :title => picture.title, :rel => "lightbox[roadtrip]" %>
+  </div>
+  
+  <div class="title"><%=h truncate(picture.title, :length => 30) %></div>
+  
+  <div class="actions">
+    <%= link_to 'Edit', edit_picture_path(picture), :class => :edit %>
+    <%= link_to 'Destroy', picture, :confirm => 'Are you sure?', :method => :delete, :class => :delete %>
+  </div>
+<% end -%>

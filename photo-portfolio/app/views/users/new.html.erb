@@ -1,4 +1,4 @@
-  <%= stylesheet_link_tag 'scaffold', 'albums', 'posts' %>
+  <%= stylesheet_link_tag 'blog' %>
 <h1 class="posts">Sign up as a new user</h1>
 <% @user.password = @user.password_confirmation = nil %>
 
@@ -13,7 +13,7 @@
 <p><%= label_tag 'password' %><br/>
 <%= f.password_field :password %></p>
 
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
+<p><%= label_tag 'password_confirmation', 'Confirm Password' %> <br/>
 <%= f.password_field :password_confirmation %></p>
 
 <p><%= submit_tag 'Sign up' %></p>
