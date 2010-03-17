@@ -19,10 +19,10 @@
  </div>
 
  <div class="links">
- 
+ |&nbsp
  <% @list=Album.find(:all)%>
  <% @list.each do |album|%>
-  <%=link_to album.name,album %>
+  <%=link_to album.name,album %> &nbsp|&nbsp
  <%end%>
  </div>
 
